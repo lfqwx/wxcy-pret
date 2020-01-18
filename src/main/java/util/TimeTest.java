@@ -1,5 +1,6 @@
-package com.post.ibaties.primary.xxx.crawl.service;
+package util;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -9,6 +10,16 @@ import java.util.Date;
  */
 public class TimeTest {
     public static void main(String[] args) {
+        Integer a = 5;
+        Integer b = 6;
+        DecimalFormat df=new DecimalFormat("0.00");
+
+        System.out.println(df.format((float)a/b));
+        System.out.println(df.format(a/(float)b));
+        System.out.println(df.format((float)a/(float)b));
+        System.out.println(df.format((float)(a/b)));
+    }
+    public static void testTime(){
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
@@ -20,6 +31,5 @@ public class TimeTest {
         String time = format.format(start);
         System.out.println(time);
         System.out.println(time.replace("-",""));
-
     }
 }
