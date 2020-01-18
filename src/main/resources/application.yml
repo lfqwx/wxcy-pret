@@ -1,0 +1,57 @@
+server:
+  port: 9200
+
+# 多数据源配置druid
+#primary
+spring:
+  datasource:
+     druid:
+        primary:
+            url: jdbc:oracle:thin:@10.162.96.167:1521:orcl
+            username: edw
+            password: edw20160218
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            initial-size: 2
+            max-active: 30
+            min-idle: 2
+            max-wait: 60000
+            test-on-borrow: false
+            test-on-return: false
+            test-while-idle: true
+            time-between-eviction-runs-millis: 60000
+            min-evictable-idle-time-millis: 300000
+            filters: stat
+            useGlobalDataSourceStat: true
+        #secondary
+        secondary:
+            url: jdbc:oracle:thin:@10.162.96.164:1521:orcl
+            username: usr_send
+            password: usr_send
+            #driver-class-name: oracle.jdbc.OracleDriver
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            initial-size: 2
+            max-active: 30
+            min-idle: 2
+            max-wait: 60000
+            test-on-borrow: false
+            test-on-return: false
+            test-while-idle: true
+            time-between-eviction-runs-millis: 60000
+            min-evictable-idle-time-millis: 300000
+            filters: stat
+            useGlobalDataSourceStat: true
+
+  jpa:
+     hibernate:
+        primary-dialect: org.hibernate.dialect.OracleDialect
+        secondary-dialect: org.hibernate.dialect.OracleDialect
+     open-in-view: true
+     show-sql: true
+  devtools:
+    livereload:
+      enabled: true
+  mvc:
+    view:
+      prefix:
+      suffix: .jsp
+
