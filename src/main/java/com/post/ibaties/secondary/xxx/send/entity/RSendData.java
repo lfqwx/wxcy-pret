@@ -12,6 +12,7 @@ public class RSendData extends SendData{
     private Integer jhrsr;//计划收入
     private Integer ryjl;//日邮件量
     private Double rsr;//日收入
+    private Integer rmbywl;//日目标业务量
 
     public RSendData() {
     }

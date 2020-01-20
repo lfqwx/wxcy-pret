@@ -10,6 +10,7 @@ import java.util.Date;
 
 public class DataBean {
 	private static DruidDataSource dataSource = new DruidDataSource();
+	private static DruidDataSource dataSource2 = new DruidDataSource();
 	static{
 		try {
 			dataSource.setUsername(DataBeanConfig.username);
@@ -36,6 +37,31 @@ public class DataBean {
 			//打开PSCache，并且指定每个连接上PSCache的大小，Oracle等支持游标的数据库，打开此开关，会以数量级提升性能
 			dataSource.setPoolPreparedStatements(true);
 			dataSource.setMaxPoolPreparedStatementPerConnectionSize(20);
+
+
+			dataSource2.setUsername(DataBeanConfig.username2);
+			dataSource2.setPassword(DataBeanConfig.password2);
+			dataSource2.setUrl(DataBeanConfig.databaseUrl);
+			dataSource2.setValidationQuery("select 1 from dual");
+			dataSource2.setTestOnBorrow(false);
+			dataSource2.setTestOnReturn(false);
+			dataSource2.setTestWhileIdle(true);
+			dataSource2.setTimeBetweenConnectErrorMillis(60000);
+			dataSource2.setDriverClassName(DataBeanConfig.databaseDriver);
+			dataSource2.setInitialSize(5);
+			dataSource2.setMinIdle(1);
+			dataSource2.setMaxActive(10);
+			dataSource2.setFilters("stat");// for mysql
+			dataSource2.setPoolPreparedStatements(false);
+
+			dataSource2.setRemoveAbandoned(true);
+
+			dataSource2.setRemoveAbandonedTimeout(1800);
+
+			dataSource2.setLogAbandoned(false);
+
+			dataSource2.setPoolPreparedStatements(true);
+			dataSource2.setMaxPoolPreparedStatementPerConnectionSize(20);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -79,6 +105,10 @@ public class DataBean {
 
 	public Connection getConnection() throws SQLException{
 		return dataSource.getConnection();
+	}
+
+	public Connection getConnection2() throws SQLException{
+		return dataSource2.getConnection();
 	}
 
 	public void closeResource(Connection conn,PreparedStatement ps,ResultSet rs){

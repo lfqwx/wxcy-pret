@@ -7,6 +7,7 @@
     <groupId>com.post.ibaties</groupId>
     <artifactId>wxcy</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -149,6 +150,7 @@
 <!--    </repositories>-->
     <!-- 编译 -->
     <build>
+        <finalName>wxcy</finalName>
         <!-- 插件 -->
         <plugins><!-- maven插件 -->
             <plugin>

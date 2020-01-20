@@ -11,6 +11,8 @@ public class DataBeanConfig {
 	public static String databaseUrl;
 	public static String username;
 	public static String password;
+	public static String username2;
+	public static String password2;
 	static {
 		Properties p = new Properties();
 		String path=DataBeanConfig.class.getResource("/config.properties").toString();
@@ -25,6 +27,8 @@ public class DataBeanConfig {
 		databaseUrl=p.getProperty("networkDatabaseUrl").trim();//localDatabaseUrl��networkDatabaseUrl
 		username=p.getProperty("username").trim();
 		password=p.getProperty("password").trim();
+		username2=p.getProperty("username2").trim();
+		password2=p.getProperty("password2").trim();
 
 	}
 
